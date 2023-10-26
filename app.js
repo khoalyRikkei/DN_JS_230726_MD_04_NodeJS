@@ -1,31 +1,69 @@
-import { createServer } from "http";
-import url from "url";
-import { matchRoute } from "./routes/index.js";
+import fs from "fs";
 
-const server = createServer((req, res) => {
-  const { pathname } = url.parse(req.url);
+const fileReadSync = fs.readFileSync("./starter/read-this.txt", "utf8");
+const fileInputSync = fs.readFileSync("./starter/input.txt", "utf8");
 
-  //   let html = "";
-  //   if (pathname === "/about") {
-  //     // res.writeHead(200, { "Content-Type": "text/html;charset=utf-8" });
-  //     html = renderHTML("Đây là about");
-  //   } else if (pathname === "/news") {
-  //     html = renderHTML("Đây là about");
-  //   } else if (pathname === "/") {
-  //     html = renderHTML("Đây là Home");
-  //   } else {
-  //     html = renderHTML("Không tìm thấy trang");
-  //   }
+fs.writeFileSync("./starter/final.txt", fileReadSync + "\n" + fileInputSync);
 
-  res.write(matchRoute(pathname));
-  return res.end();
+console.log(fileReadSync);
+console.log(fileInputSync);
+
+fs.readFile("./starter/read-this.txt", "utf8", (err1, data1) => {
+  //   console.log(111, data1); //resolve
+  fs.readFile("./starter/input.txt", "utf8", (err2, data2) => {
+    const data = data1 + "\n" + data2;
+
+    // console.log(222, data);
+
+    // Tiến hành ghi file -->writeFile
+  });
 });
-console.log("Xin chào nodemon");
 
-console.log("Hello NodeJS!");
+const promise1 = new Promise((resolve, reject) => {
+  fs.readFile("./starter/read-this.txt", "utf8", (err, data) => {
+    if (err) {
+      reject(err);
+    }
 
-const PORT = 8000;
-
-server.listen(PORT, () => {
-  console.log(`Server running... at port http://khoale-rikkeiacademy:${PORT}`);
+    setTimeout(() => {
+      resolve(data);
+    }, 5000);
+  });
 });
+const promise2 = new Promise((resolve, reject) => {
+  fs.readFile("./starter/read-this.txt", "utf8", (err, data) => {
+    if (err) {
+      reject(err);
+    }
+    setTimeout(() => {
+      resolve(data);
+    }, 5000);
+  });
+});
+
+promise1.then((res) => {
+  //   console.log(33333, res);
+});
+
+Promise.all([promise1, promise2])
+  .then((res) => {
+    console.log(1111, res);
+  })
+  .catch((err) => {
+    console.log();
+  });
+
+promiseData();
+
+async function promiseData() {
+  try {
+    const data1 = await promise1;
+    const data2 = await promise2;
+    console.log(4444, data1 + data2);
+  } catch (err) {}
+}
+// fs.readFile("./starter/input.txt", "utf8", (err2, data2) => {
+//   const data = data1 + "\n" + data2;
+
+//   console.log(222, data);
+// });
