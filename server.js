@@ -2,10 +2,12 @@ import http from "http";
 import { matchRoute } from "./routes/matchRoute.js";
 
 const server = http.createServer((req, res) => {
-  const url = req.url;
+
+
+  // const url = req.url;
   //   res.setHeader({ "Content-Type": "application/json" });
-  res.write(matchRoute(url));
-  res.end();
+  // res.write(matchRoute(url));
+  // res.end();
 });
 
 const PORT = 8888;
