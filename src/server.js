@@ -1,47 +1,53 @@
-import http from "http";
+import express from "express";
+import bodyParser from "body-parser";
 
-import url from "url";
-import queryString from "querystring";
+// config evn
+import "dotenv/config";
+import { route } from "./routes/index.js";
 
-const server = http.createServer((req, res) => {
-  const urlParse = url.parse(req.url); // chuyển đổi url
+//thay thế cho server trước đây
+const app = express();
 
-  console.log("Kiểm tra method", req.method);
+// dùng middleware bodyParser để lấy dữ liệu từ body http request
+app.use(bodyParser.urlencoded({ extended: false }));
 
-  console.log(1111, urlParse);
+route(app);
 
-  //   Set phản hồi kiểu JSON
+// Phương thức get --> yêu cầu dữ liệu
+// app.get("/products", (req, res) => {
+//   //res.write() --> res.end()
 
-  res.setHeader("Content-Type", "application/json");
+//   //   lấy từ database để trả về
+//   res.send([
+//     { id: 1, name: "products 1" },
+//     { id: 2, name: "products 2" },
+//   ]);
+// });
+// app.get("/products/:id", (req, res) => {
+//   // Để lấy params --> req.params
+//   console.log("Lấy id: ", req.params);
+// });
 
-  if (req.method === "GET") {
-    const data = queryString.parse(urlParse.query); // chuyển đổi data từ url --? cắt những chữ & --> object
+// app.get("/account/:course/:lesson", (req, res) => {
+//   // Để lấy params --> req.params
+//   console.log("Lấy id: ", req.params);
+// });
 
-    console.log("username từ client", data.username);
-    console.log("email từ client", data.email);
+// app.post("/login", (req, res) => {
+//   //res.write() --> res.end()
+//   console.log("Kiểm tra req", req.body);
+//   res.send("Hello data");
+// });
 
-    res.write(JSON.stringify(data));
-    res.end();
-  }
+// dùng với characters *
+// app.get("/*", (req, res) => {
+//   //res.write() --> res.end()
+//   res.send("Page not found");
+// });
 
-  if (req.method == "POST") {
-    //   Trong trường hợp method post --> truyền sang HTTP request body
-    let data;
-    req
-      .on("error", (err) => {
-        console.log("Lỗi", err);
-      })
-      .on("data", (chunk) => {
-        data = chunk.toString();
-      })
-      .on("end", () => {
-        const newData = queryString.parse(data);
-        res.write(JSON.stringify(newData));
-        res.end();
-      });
-  }
-});
+// lấy PORT từ dotenv
+const PORT = process.env.PORT || 3000;
 
-server.listen(8888, () => {
-  console.log(`Connect to http://localhost:${8888}`);
+app.listen(PORT, () => {
+  console.log(`Connecting to http://localhost:${PORT}`);
 });
