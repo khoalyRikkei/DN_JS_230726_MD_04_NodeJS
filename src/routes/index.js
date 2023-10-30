@@ -6,11 +6,15 @@ export function route(app) {
   //auth/login
   // auth/register
   //auth/logout
-  app.use("/auth", authRouter);
+  app.use("/api/v1/auth", authRouter);
+//   app.use("/api/v1/products", authRouter);
+//   app.use("/api/v1/orders", authRouter);
+
+
 
   //   auth
 
-  app.get("/auth/logout");
-  app.post("/auth/login");
-  app.post("/auth/register");
+//   app.get("/auth/logout");
+//   app.post("/auth/login");
+//   app.post("/auth/register");
 }

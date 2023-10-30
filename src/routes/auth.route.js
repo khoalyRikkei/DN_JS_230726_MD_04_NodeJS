@@ -1,17 +1,14 @@
 import express from "express";
+import AuthController from "../controllers/auth.controller.js";
 
 const authRouter = express.Router();
+const autheController = new AuthController();
 
-authRouter.post("/login", (req, res) => {
+authRouter.post("/login", autheController.login);
 
-    console.log(req.body);
-  res.send("Login thành công");
-});
-
-authRouter.post("/register", (req, res) => {
-  res.send("Register thành công");
-});
+authRouter.post("/register", autheController.register);
 
 authRouter.get("/logout", (req, res) => {});
 
 export default authRouter;
+// thay thế cho module.exports của commonModule
