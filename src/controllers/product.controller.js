@@ -18,6 +18,27 @@ class ProductController {
       });
     }
   }
+  getAllProducts(req, res) {
+    const productsJSON = fs.readFileSync("./src/models/data.json", "utf8");
+    const products = JSON.parse(productsJSON);
+    console.log(11111);
+    res.json(products);
+  }
+
+  createProduct(req, res) {
+    const data = { ...req.body };
+
+    console.log(req);
+    const productsJSON = fs.readFileSync("./src/models/data.json", "utf8");
+    const products = JSON.parse(productsJSON);
+    products.push(data);
+    fs.writeFileSync("./src/models/data.json", JSON.stringify(products));
+    res.json({
+      status: 200,
+      message: "Ok",
+      data: products,
+    });
+  }
   deleteProduct(req, res) {}
 }
 

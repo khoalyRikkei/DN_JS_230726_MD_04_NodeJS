@@ -1,12 +1,17 @@
-
-
 import express from "express";
 import { route } from "./src/routes/index.js";
+import cors from "cors";
+import bodyParser from "body-parser";
 
 const app = express();
 
 app.set("view engine", "ejs");
 app.set("views", "src/views");
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+// Cấu hình cors
+app.use(cors());
 
 route(app);
 
