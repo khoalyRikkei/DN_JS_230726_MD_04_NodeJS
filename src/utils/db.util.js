@@ -19,8 +19,10 @@ function getData(pathFile) {
 
 // delete --> true/false
 
-export function getAllItems(pathFile) {
-  const entities = fs.readFileSync(pathFile, "utf-8");
+// filePath
+
+export function getAllItems(resource) {
+  const entities = fs.readFileSync(`./src/models/${resource}.json`, "utf-8");
   return entities;
 }
 
@@ -29,7 +31,8 @@ export function insertItem(tableName, entity) {
     if (!entity.id) {
       const entities = JSON.parse(localStorage.getItem(tableName));
 
-      let id = entities[entities.length - 1].id + 1;
+      let id = entities.length ? entities[entities.length - 1].id + 1 : 1;
+      entity.id = id;
       entities.push(entity);
       localStorage.setItem(tableName, JSON.stringify(entities));
       return entity.id;

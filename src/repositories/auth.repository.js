@@ -1,4 +1,4 @@
-import { getData } from "../utils/db.util";
+import { getData } from "../utils/db.util.js";
 
 class AuthRepository {
   getUser() {
