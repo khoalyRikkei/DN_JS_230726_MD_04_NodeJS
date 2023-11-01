@@ -1,69 +1,28 @@
-import fs from "fs";
 
-const fileReadSync = fs.readFileSync("./starter/read-this.txt", "utf8");
-const fileInputSync = fs.readFileSync("./starter/input.txt", "utf8");
 
-fs.writeFileSync("./starter/final.txt", fileReadSync + "\n" + fileInputSync);
+import express from "express";
+import { route } from "./src/routes/index.js";
 
-console.log(fileReadSync);
-console.log(fileInputSync);
+const app = express();
 
-fs.readFile("./starter/read-this.txt", "utf8", (err1, data1) => {
-  //   console.log(111, data1); //resolve
-  fs.readFile("./starter/input.txt", "utf8", (err2, data2) => {
-    const data = data1 + "\n" + data2;
+app.set("view engine", "ejs");
+app.set("views", "src/views");
 
-    // console.log(222, data);
+route(app);
 
-    // Tiến hành ghi file -->writeFile
-  });
+// GET / --> hiển thị home
+// GET /overview --> Hiển thị home
+
+// GET /create --> Hiển thị form tạo sản phẩm mới
+// POST /create --> Tạo sản phẩm mới theo form
+
+// GET /product/:id --> hiển thị product detail
+
+// GET /delete/:id --> Xóa sản phẩm
+// POST /product/:id --> update sản phẩm từ form
+
+// GET /search
+
+app.listen(5555, () => {
+  console.log("Connecting to http://localhost:5555");
 });
-
-const promise1 = new Promise((resolve, reject) => {
-  fs.readFile("./starter/read-this.txt", "utf8", (err, data) => {
-    if (err) {
-      reject(err);
-    }
-
-    setTimeout(() => {
-      resolve(data);
-    }, 5000);
-  });
-});
-const promise2 = new Promise((resolve, reject) => {
-  fs.readFile("./starter/read-this.txt", "utf8", (err, data) => {
-    if (err) {
-      reject(err);
-    }
-    setTimeout(() => {
-      resolve(data);
-    }, 5000);
-  });
-});
-
-promise1.then((res) => {
-  //   console.log(33333, res);
-});
-
-Promise.all([promise1, promise2])
-  .then((res) => {
-    console.log(1111, res);
-  })
-  .catch((err) => {
-    console.log();
-  });
-
-promiseData();
-
-async function promiseData() {
-  try {
-    const data1 = await promise1;
-    const data2 = await promise2;
-    console.log(4444, data1 + data2);
-  } catch (err) {}
-}
-// fs.readFile("./starter/input.txt", "utf8", (err2, data2) => {
-//   const data = data1 + "\n" + data2;
-
-//   console.log(222, data);
-// });
