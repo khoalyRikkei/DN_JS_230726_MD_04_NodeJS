@@ -1,0 +1,162 @@
+[
+  {
+    "id": 1,
+    "name": "Võ Sỹ Quyết",
+    "email": "quyetvosy@gmail.com",
+    "phone": "0911639333",
+    "password": "11111111",
+    "created_at": "12/09/2000",
+    "avatar": "string",
+    "cart": [
+      {
+        "id": 2,
+        "category": "Áo",
+        "name": "Áo khoác",
+        "price": 200000,
+        "size": "XXL",
+        "quantity": 4,
+        "created_at": "19/10/2023",
+        "image": ["/assets/image/anh sản phẩm 1.jpg"],
+        "describe": "Với chất liệu thun gân siêu thoáng mát, tạo cho người mặc cảm thấy thoải mái và cực dễ chịu!!!"
+      },
+      {
+        "id": 6,
+        "category": "váy",
+        "name": "váy công sở",
+        "price": 600000,
+        "size": "L",
+        "quantity": 7,
+        "created_at": "19/10/2023",
+        "image": ["/assets/image/anh sản phẩm 1.jpg"],
+        "describe": " Với chất liệu thun gân siêu thoáng mát, tạo cho người mặc cảm thấy thoải mái và cực dễ chịu!!!"
+      }
+    ],
+    "role": "customer",
+    "status": "activate",
+    "address": "Đà Nẵng"
+  },
+  {
+    "id": 2,
+    "name": "Thái",
+    "email": "quyetvosy1@gmail.com",
+    "phone": "0911639333",
+    "password": "11111111",
+    "created_at": "12/09/2000",
+    "avatar": "string",
+    "cart": [
+      {
+        "id": 1,
+        "category": "váy",
+        "name": "váy công sở",
+        "price": 100000,
+        "size": "L",
+        "quantity": 10,
+        "created_at": "19/10/2023",
+        "image": ["/assets/image/anh sản phẩm 1.jpg"],
+        "describe": " Váy chân dài luôn có sức hút và vị trí riêng trong vô vàn sản phẩm thời trang cho nữ"
+      }
+    ],
+    "role": "customer",
+    "status": "activate",
+    "address": "Hải Phòng"
+  },
+  {
+    "id": 3,
+    "name": "Viễn",
+    "email": "quyetvosy2@gmail.com",
+    "phone": "0911639333",
+    "password": "11111111",
+    "created_at": "12/09/2000",
+    "avatar": "string",
+    "cart": [],
+    "role": "customer",
+    "status": "activate",
+    "address": "Đà Nẵng"
+  },
+  {
+    "id": 4,
+    "name": "Hương",
+    "email": "quyetvosy3@gmail.com",
+    "phone": "0911639333",
+    "password": "11111111",
+    "created_at": "12/09/2000",
+    "avatar": "string",
+    "cart": [],
+    "role": "customer",
+    "status": "activate",
+    "address": "Hà Nội"
+  },
+  {
+    "id": 5,
+    "name": "Việt",
+    "email": "quyetvosy4@gmail.com",
+    "phone": "0911639333",
+    "password": "11111111",
+    "created_at": "12/09/2000",
+    "avatar": "string",
+    "cart": [],
+    "role": "customer",
+    "status": "activate",
+    "address": "Hà Nội"
+  },
+  {
+    "id": "29185820-c738-4435-94ab-70fb7b47adfd",
+    "email": "quyetvosy5@gmail.com",
+    "name": "nguyễn văn a",
+    "phone": "0911639333",
+    "password": "11111111",
+    "address": "Đà Nẵng",
+    "created_at": "23/10/2023",
+    "role": "custumer",
+    "status": "activate",
+    "cart": []
+  },
+  {
+    "id": "2b1-4281-b1ce-9d62fd4e9c4e",
+    "email": "quyetvosy6@gmail.com",
+    "name": "nguyễn văn b",
+    "phone": "0911639333",
+    "password": "11111111",
+    "address": "Đà Nẵng",
+    "created_at": "23/10/2023",
+    "role": "custumer",
+    "status": "activate",
+    "cart": []
+  },
+  {
+    "id": "6182885a34d1",
+    "email": "quyetvosy7@gmail.com",
+    "name": "nguyễn văn c",
+    "phone": "0911639333",
+    "password": "11111111",
+    "address": "Đà Nẵng",
+    "created_at": "23/10/2023",
+    "role": "custumer",
+    "status": "activate",
+    "cart": []
+  },
+  {
+    "id": "52b8436b7234",
+    "email": "quyetvosy11@gmail.com",
+    "name": "qqqwwq",
+    "phone": "0911639333",
+    "password": "11111111",
+    "address": "Đà Nẵng",
+    "created_at": "24/10/2023",
+    "role": "custumer",
+    "status": "inactive",
+    "cart": []
+  },
+  {
+    "id": "3853847da82d",
+    "email": "quyetvosy12@gmail.com",
+    "name": "nguyễn văn a",
+    "phone": "0911639333",
+    "password": "11111111",
+    "address": "Đà Nẵng",
+    "created_at": "24/10/2023",
+    "role": "custumer",
+    "status": "inactive",
+    "cart": []
+  }
+]
