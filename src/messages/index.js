@@ -4,7 +4,7 @@ export const MSG_COMMON = {
     UnauthorizedException: "Yêu cầu xác thực",
     NotFoundException: "Không tìm thấy",
     ForbiddenException: "Từ chối truy cập",
-    InternalServerErrorException: "Lỗi server",
+    InternalServerException: "Lỗi server",
   },
   MSG_SUCCESS: (data) => ({
     create: `Tạo ${data} thành công`,

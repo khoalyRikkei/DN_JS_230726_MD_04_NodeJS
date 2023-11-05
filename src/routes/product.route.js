@@ -1,11 +1,12 @@
 import express from "express";
 
 import productController from "../controllers/product.controller.js";
+import handleException from "../middlewares/exceiption.js";
 
 const productRoute = express.Router();
 
 //[GET]
-productRoute.get("/", productController.getAllData);
+productRoute.get("/", handleException, productController.getAllData);
 productRoute.get("/:id", productController.getProduct);
 
 // [POST]

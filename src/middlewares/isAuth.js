@@ -4,9 +4,9 @@ export function isAuth(req, res, next) {
 
   let isAdmin = true;
   if (!isAdmin) {
-    return res.status(404).send("Unauthorized");
+    return res.status(401).send("Unauthorized");
   }
-  const user = { isAdmin: true, password: "Hello wword" };
+  const user = { isAdmin: true, name: "admin" };
 
   req.user = user;
   //   next();

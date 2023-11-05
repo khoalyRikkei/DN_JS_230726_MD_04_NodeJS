@@ -7,65 +7,29 @@ import writeFile from "../utils/writeFile.js";
 const productServices = new ProductServices();
 
 // Lấy toàn bộ product
-const getAllData = (req, res) => {
+const getAllData = (req, res, next) => {
   // #swagger.tags = ['Users']
-  /*  #swagger.auto = false
-
-        #swagger.path = '/users/{id}'
-        #swagger.method = 'put'
-        #swagger.produces = ['application/json']
-        #swagger.consumes = ['application/json']
-
-        #swagger.parameters['id'] = {
-            in: 'path',
-            description: 'User ID.',
-            required: true,
-            type: 'integer'
-        }
-
-        #swagger.parameters['body'] = {
-            in: 'body',
-            description: 'User data.',
-            required: true,
-            schema: {
-                username: "user",
-                password: "1234"
-            }
-        }
-    */
   try {
     const data = productServices.getAllProduct();
-    res.status(200).send(data);
+    res
+      .status(200)
+      .json({ message: MSG_COMMON.MSG_SUCCESS("sản phẩm").read, data: data });
   } catch (err) {
-    console.log(err);
-    res.status(500).send({
-      message: MSG_COMMON.MSG_ERROR.server,
-    });
+    next(err);
   }
 };
 
 // Lấy product theo điều kiện
 const getProduct = (req, res) => {
-  /*  #swagger.parameters['body'] = {
-            in: 'body',
-            description: 'Add new user.',
-            schema: { $ref: '#/definitions/AddUser' }
-    } */
   const id = req.params.id;
   try {
     const data = productServices.getProduct({ id: id });
-    res.status(200).send(data);
+    res.status(200).json(data);
   } catch (err) {
     // Xử lý các lỗi của product
     // 1. Lỗi không tìm thấy sản phẩm
-    if (err.message === MSG_COMMON.MSG_INFO("products").not_data) {
-      return res.status(403).send(MSG_COMMON.MSG_INFO("products").not_data);
-    }
-
+    next(err);
     // 2. Lỗi server
-    res.status(500).send({
-      message: MSG_COMMON.MSG_ERROR.server,
-    });
   }
 };
 

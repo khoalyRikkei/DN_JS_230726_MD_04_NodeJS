@@ -2,8 +2,6 @@ import readFile from "../utils/readFile.js";
 import writeFile from "../utils/writeFile.js";
 
 const getReceipt = (req, res) => {
-
-  console.log(222, req.user);
   const dataProduct = readFile("products");
   const dataReceipt = readFile("receipt");
   if (!dataProduct) {

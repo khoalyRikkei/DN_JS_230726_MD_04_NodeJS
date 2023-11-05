@@ -1,14 +1,14 @@
-import { ServiceException } from "../exceptions/service.exception.js";
+import { NotFoundException } from "../exceptions/index.js";
 import { MSG_COMMON } from "../messages/index.js";
 import readFile from "../utils/readFile.js";
 
 class ProductServices {
   getAllProduct() {
     try {
-      const data = readFile("product");
+      const data = readFile("product44444444");
       return {
         statusCode: 200,
-        message: MSG_COMMON.MSG_SUCCESS.get_data,
+        message: MSG_COMMON.MSG_SUCCESS("Sản phẩm").read,
         data: data,
       };
     } catch (error) {
@@ -34,9 +34,8 @@ class ProductServices {
           data: product,
         };
       }
-      throw new ServiceException(403, MSG_COMMON.MSG_INFO("Product").not_data);
     } catch (error) {
-      throw error;
+      throw new NotFoundException("Sản phẩm không được tìm thấy", 403);
     }
   }
 }

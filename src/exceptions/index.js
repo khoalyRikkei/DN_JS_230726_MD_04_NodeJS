@@ -1,38 +1,42 @@
 class BadRequestException extends Error {
-  constructor(message, statusCode = 400) {
+  constructor(message, statusCode = 400, field = null) {
     super(message);
     this.name = "BadRequestException";
     this.statusCode = statusCode;
+    this.errors = field;
   }
 }
 
 class UnauthorizedException extends Error {
-  constructor(message, statusCode = 401) {
+  constructor(message, statusCode = 401, field = null) {
     super(message);
     this.name = "UnauthorizedException";
     this.statusCode = statusCode;
+    this.errors = field;
   }
 }
 class NotFoundException extends Error {
-  constructor(message, statusCode = 404) {
+  constructor(message, statusCode = 404, field = null) {
     super(message);
     this.name = "NotFoundException";
     this.statusCode = statusCode;
+    this.errors = field;
   }
 }
 class ValidationException extends Error {
-  constructor(message, statusCode = 400) {
+  constructor(message, statusCode = 400, field = null) {
     super(message);
     this.name = "ValidationException";
     this.statusCode = statusCode;
-    this.field = this.field;
+    this.errors = field;
   }
 }
-class InternalServerErrorException extends Error {
-  constructor(message, statusCode = 500) {
+class InternalServerException extends Error {
+  constructor(message, statusCode = 500, field = null) {
     super(message);
     this.name = "InternalServerErrorException";
     this.statusCode = statusCode;
+    this.errors = field;
   }
 }
 export {
@@ -40,5 +44,5 @@ export {
   UnauthorizedException,
   NotFoundException,
   ValidationException,
-  InternalServerErrorException,
+  InternalServerException,
 };
