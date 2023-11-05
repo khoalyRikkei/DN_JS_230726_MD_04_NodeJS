@@ -1,22 +1,25 @@
 export const MSG_COMMON = {
   MSG_ERROR: {
-    server: "Internal Server Error",
-    not_page: "Page Not Found",
-    auth: "Invalid Authentication",
+    BadRequestException: "Yêu cầu không hợp lệ",
+    UnauthorizedException: "Yêu cầu xác thực",
+    NotFoundException: "Không tìm thấy",
+    ForbiddenException: "Từ chối truy cập",
+    InternalServerErrorException: "Lỗi server",
   },
-  MSG_SUCCESS: {
-    get_data: "Get data successfully",
-    update_data: "Update data successfully",
-    delete_data: "Delete data successfully",
-    create_data: "Create data successfully",
-  },
-  MSG_INFO: (info) => {
-    return {
-      not_data: info + "not found",
-    };
-  },
+  MSG_SUCCESS: (data) => ({
+    create: `Tạo ${data} thành công`,
+    read: `Lấy ${data} thành công`,
+    update: `Update ${data} thành công`,
+    delete: `Delete ${data} thành công`,
+  }),
+  MSG_FAILURE: (data) => ({
+    create: `Tạo ${data} thất bại`,
+    read: `Lấy ${data} thất bại`,
+    update: `Update ${data} thất bại`,
+    delete: `Delete ${data} thất bại`,
+  }),
 };
 
-export const MSG_001 = {};
-export const MSG_002 = {};
-export const MSG_003 = {};
+export const MSG_VALIDATION = {
+  UnauthorizedException: "Email hoặc mật khẩu không đúng",
+};

@@ -8,6 +8,31 @@ const productServices = new ProductServices();
 
 // Lấy toàn bộ product
 const getAllData = (req, res) => {
+  // #swagger.tags = ['Users']
+  /*  #swagger.auto = false
+
+        #swagger.path = '/users/{id}'
+        #swagger.method = 'put'
+        #swagger.produces = ['application/json']
+        #swagger.consumes = ['application/json']
+
+        #swagger.parameters['id'] = {
+            in: 'path',
+            description: 'User ID.',
+            required: true,
+            type: 'integer'
+        }
+
+        #swagger.parameters['body'] = {
+            in: 'body',
+            description: 'User data.',
+            required: true,
+            schema: {
+                username: "user",
+                password: "1234"
+            }
+        }
+    */
   try {
     const data = productServices.getAllProduct();
     res.status(200).send(data);
@@ -21,6 +46,11 @@ const getAllData = (req, res) => {
 
 // Lấy product theo điều kiện
 const getProduct = (req, res) => {
+  /*  #swagger.parameters['body'] = {
+            in: 'body',
+            description: 'Add new user.',
+            schema: { $ref: '#/definitions/AddUser' }
+    } */
   const id = req.params.id;
   try {
     const data = productServices.getProduct({ id: id });
@@ -28,8 +58,8 @@ const getProduct = (req, res) => {
   } catch (err) {
     // Xử lý các lỗi của product
     // 1. Lỗi không tìm thấy sản phẩm
-    if (err.message === MSG_COMMON.MSG_INFO("product").not_data) {
-      return res.status(403).send(MSG_COMMON.MSG_INFO("product").not_data);
+    if (err.message === MSG_COMMON.MSG_INFO("products").not_data) {
+      return res.status(403).send(MSG_COMMON.MSG_INFO("products").not_data);
     }
 
     // 2. Lỗi server
@@ -40,7 +70,7 @@ const getProduct = (req, res) => {
 };
 
 const createProduct = (req, res) => {
-  const data = readFile("product");
+  const data = readFile("products");
   if (data) {
     const newData = { ...req.body };
     const products = data;
@@ -54,13 +84,13 @@ const createProduct = (req, res) => {
 };
 
 const updateProduct = (req, res) => {
-  const data = readFile("product");
+  const data = readFile("products");
   if (data) {
     const newData = { ...req.body };
 
     const products = data;
     if (!newData.id) {
-      return res.status(409).send("Không có sản phẩm cần update");
+      return res.status(400).send("Không có sản phẩm cần update");
     }
     const newProducts = products.map((product) => {
       if (product.id == newData.id) {
