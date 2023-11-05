@@ -2,7 +2,7 @@ export const MSG_COMMON = {
   MSG_ERROR: {
     BadRequestException: "Yêu cầu không hợp lệ",
     UnauthorizedException: "Yêu cầu xác thực",
-    NotFoundException: "Không tìm thấy",
+    NotFoundException: "Không tìm thấy tài nguyên",
     ForbiddenException: "Từ chối truy cập",
     InternalServerException: "Lỗi server",
   },
